@@ -8,7 +8,7 @@ import (
 )
 
 func WriteErrorResponse(w http.ResponseWriter, code int, err error) {
-	response := map[string]any{"error": fmt.Sprintf("%v", err.Error())}
+	response := map[string]string{"error": fmt.Sprintf("%v", err.Error())}
 
 	WriteResponse(w, code, response)
 }
