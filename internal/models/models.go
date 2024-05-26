@@ -5,6 +5,6 @@ type Exchanger struct {
 	Banknotes []int `json:"banknotes"`
 }
 
-type ResponseChanges struct {
+type Exchange struct {
 	Exchanges [][]int `json:"exchanges"`
 }

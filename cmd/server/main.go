@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"exchanger_test/internal/config"
 	"exchanger_test/internal/handlers"
 	"exchanger_test/internal/service"
 	"github.com/sirupsen/logrus"
@@ -14,13 +15,16 @@ import (
 )
 
 func main() {
-	logrus.SetLevel(logrus.InfoLevel)
+	logLevel := config.GetLoggerLevel()
+	host := config.GetHostConfig()
+	port := config.GetPortConfig()
 
 	exchangerService := service.NewExchangerService()
 	exchangeHandler := handlers.NewExchangerHandler(exchangerService)
 
+	logrus.SetLevel(logLevel)
 	server := http.Server{
-		Addr: ":8080",
+		Addr: host + port,
 	}
 
 	http.Handle("/exchanger", exchangeHandler.GetExchanger())

@@ -10,10 +10,10 @@ import (
 func WriteErrorResponse(w http.ResponseWriter, code int, err error) {
 	response := map[string]any{"error": fmt.Sprintf("%v", err.Error())}
 
-	WriteSuccessResponse(w, code, response)
+	WriteResponse(w, code, response)
 }
 
-func WriteSuccessResponse(w http.ResponseWriter, code int, data interface{}) {
+func WriteResponse(w http.ResponseWriter, code int, data interface{}) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(code)
 
