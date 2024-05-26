@@ -6,7 +6,6 @@ import (
 	"exchanger_test/internal/handlers"
 	"exchanger_test/internal/service"
 	"github.com/sirupsen/logrus"
-	"log"
 	"net/http"
 	"os"
 	"os/signal"
@@ -36,7 +35,7 @@ func main() {
 
 	go func() {
 		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			log.Fatal(err)
+			logrus.Fatal(err)
 		}
 	}()
 
@@ -46,7 +45,7 @@ func main() {
 		defer cancel()
 
 		if err := server.Shutdown(ctx); err != nil {
-			log.Fatal(err)
+			logrus.Fatal(err)
 		}
 
 		close(done)
