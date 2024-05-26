@@ -2,6 +2,42 @@ POST http://localhost:8080/exchanger
 Content-Type: application/json
 
 {
+  "amount": 400,
+  "banknotes": [
+    5000,
+    2000,
+    1000,
+    500,
+    200,
+    100,
+    50
+  ]
+}
+
+###
+
+POST http://localhost:8080/exchanger
+Content-Type: application/json
+
+{
+  "amount": 300,
+  "banknotes": [
+    5000,
+    2000,
+    1000,
+    500,
+    200,
+    100,
+    50
+  ]
+}
+
+###
+
+POST http://localhost:8080/exchanger
+Content-Type: application/json
+
+{
   "amount": -100,
   "banknotes": [
     5000,
