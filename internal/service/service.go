@@ -34,14 +34,12 @@ func findCombinations(banknotes []int, amount int) ([][]int, error) {
 	var result [][]int
 	var findCombinationRecursively func(int, int, []int)
 	if amount <= 0 {
-		//logrus.Error("amount must be greater than zero")
 		return nil, fmt.Errorf("amount must be greater than zero: %v", errZeroOrNegativeAmount)
 	}
 
 	minVal := minBanknote(banknotes)
 
 	if amount%minVal != 0 {
-		//logrus.Error("amount must be a multiple of ", minVal)
 		return nil, fmt.Errorf("amount must be multiple of %d: %v", minVal, errIncorrectAmount)
 	}
 
