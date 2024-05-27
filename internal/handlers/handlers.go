@@ -43,10 +43,12 @@ func (h *ExchangerHandler) GetExchanger() http.HandlerFunc {
 
 		exchanges, err := h.service.ExchangeAmount(exchanger)
 		if err != nil {
+			logrus.Error(err)
 			utils.WriteErrorResponse(w, http.StatusBadRequest, err)
 			return
 		}
 
+		logrus.Info("success getting exchange")
 		utils.WriteResponse(w, http.StatusOK, exchanges)
 	}
 }
